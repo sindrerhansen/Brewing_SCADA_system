@@ -12,13 +12,14 @@ using System.IO;
 using Microsoft.Win32;
 using BryggeprogramWPF.ViewModel;
 using GalaSoft.MvvmLight;
-
+using System.Windows.Forms;
 
 namespace BryggeprogramWPF
 {
 
     public class MainViewModel : ViewModelBase
     {
+        private ProsessViewModel prosessViewModel;
         public RelayCommand ResetGraphCommand { get; private set; }
 
         private PlotModel plotModel;
@@ -302,7 +303,11 @@ namespace BryggeprogramWPF
         private void OpenProsessViewCommandExecute()
         {
             ProsessWindow prosessWindow = new ProsessWindow();
-            ProsessViewModel prosessViewModel = new ProsessViewModel();
+            if (prosessViewModel==null)
+            {
+                prosessViewModel = new ProsessViewModel();
+            }
+             
             prosessWindow.DataContext = prosessViewModel;
             prosessWindow.Show();
         }
@@ -314,6 +319,11 @@ namespace BryggeprogramWPF
             LoadData();
             CreatePoenProsessViewCommand();
             ResetGraphCommand = new RelayCommand(ResetGraph, CanResetGraph);
+            if (Screen.AllScreens.Length > 1)
+            {
+                OpenProsessViewCommandExecute();
+            }
+            
 
         }
 
@@ -435,7 +445,7 @@ namespace BryggeprogramWPF
         private void FuncToCall(object context)
         {
             //this is called when the button is clicked
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
             if (saveFileDialog.ShowDialog() == true)
             {
                 using (var stream = File.Create(saveFileDialog.FileName))

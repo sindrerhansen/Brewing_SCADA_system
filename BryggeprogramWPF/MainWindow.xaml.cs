@@ -76,7 +76,8 @@ namespace BryggeprogramWPF
             DropDownBaudRate.SelectedItem = "9600";
             cbHubIp.Items.Add("192.168.3.80");
             cbHubIp.Items.Add("93.89.117.144");
-cbHubIp.SelectedItem = "192.168.3.80";
+            cbHubIp.Items.Add("localhost");
+
             DropDownComPorts.ItemsSource = SerialPort.GetPortNames();
             btnConfirm.IsEnabled = false;
             simulator = new Simulate();
@@ -904,14 +905,7 @@ cbHubIp.SelectedItem = "192.168.3.80";
             }
         }
 
-        private void txtTimerDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            ProsessWindow prosessWindow = new ProsessWindow();
-            ProsessViewModel prosessViewModel = new ProsessViewModel();
-            prosessWindow.DataContext = prosessViewModel;
-            prosessWindow.Show();
 
-        }
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {

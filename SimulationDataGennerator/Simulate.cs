@@ -8,7 +8,7 @@ namespace SimulationDataGennerator
         public string GennerateSimulatedArduinoValues()
         {
             string ret = "";
-            ret += "STATE" + "10" + "_";
+            ret += "STATE" + "20" + "_";
 
             ret += "HltTe" + (0 + 10 * Math.Sin(conter)).ToString().Replace(',', '.') + "_";
             ret += "HltSp" + (0 + 10 * Math.Sin(conter)).ToString().Replace(',', '.') + "_";

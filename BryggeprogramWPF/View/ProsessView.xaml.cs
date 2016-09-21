@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using System.Windows.Forms;
 
 namespace BryggeprogramWPF
 {
@@ -22,6 +11,16 @@ namespace BryggeprogramWPF
         public ProsessWindow()
         {
             InitializeComponent();
+
+         
+            if (Screen.AllScreens.Length > 1)
+            {             
+                Screen s2 = Screen.AllScreens[1];            
+                this.Show();
+                this.Left = s2.Bounds.Left;
+                this.Top = s2.Bounds.Top;
+                this.WindowState = WindowState.Maximized;
+            }
         }
     }
 }

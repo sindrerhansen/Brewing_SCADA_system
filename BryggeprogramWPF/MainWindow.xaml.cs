@@ -141,7 +141,7 @@ namespace BryggeprogramWPF
                 try
                 {
                     string indata = sp.ReadLine();
-                    //hubClient.Hub.Invoke("MulticastBrewingData", indata);
+                    hubClient.Hub.Invoke("MulticastBrewingData", indata);
                     Dispatcher.Invoke(DispatcherPriority.Send, new UpdateUiTextDelegate(DecodeDataString), indata);
                 }
                 catch (Exception)
@@ -1000,6 +1000,7 @@ namespace BryggeprogramWPF
 
 
             hubClient = new HubClientStart(cbHubIp.SelectedValue.ToString());
+           
             hubClient.Connection.Error += ex => MessageBox.Show("Hub error: {0}", ex.Message);
             if (!mySerialPort.IsOpen)
             {

@@ -14,7 +14,7 @@ namespace BryggeprogramWPF
             private set { _hub = value; }
         
         }
-        string url = @"http://localhost:8088/";
+
            
         private HubConnection connection;
         public HubConnection Connection

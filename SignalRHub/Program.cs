@@ -12,7 +12,7 @@ namespace SignalRHub
         static void Main(string[] args)
         {
             var ip = ConfigurationManager.AppSettings["LocalIP"];
-            string url = @"http://localhost:8088/";
+            string url = @"http://" + ip + ":8088/";
             WebApp.Start<Startup>(url);
 
             Console.WriteLine(string.Format("Server running at {0}",url ));

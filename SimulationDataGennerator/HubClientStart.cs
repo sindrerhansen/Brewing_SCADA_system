@@ -1,10 +1,12 @@
 ﻿using System;
 using Microsoft.AspNet.SignalR.Client;
+using System.Configuration;
 
 namespace SimulationDataGennerator
 {
     public class HubClientStart
     {
+
         private IHubProxy _hub;
         public IHubProxy Hub
         {
@@ -12,7 +14,8 @@ namespace SimulationDataGennerator
             private set { _hub = value; }
 
         }
-        string url = @"http://localhost:8088/";
+        string BrewHubAddress = ConfigurationManager.AppSettings["BrewHubAddress"];
+        
 
         private HubConnection connection;
         public HubConnection Connection
@@ -30,6 +33,7 @@ namespace SimulationDataGennerator
 
         private void Connect()
         {
+            string url = @"http://" + BrewHubAddress + ":8088/";
             try
             {
                 connection = new HubConnection(url);

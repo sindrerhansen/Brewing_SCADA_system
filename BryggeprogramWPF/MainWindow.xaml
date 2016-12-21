@@ -8,23 +8,24 @@
         xmlns:local="clr-namespace:BryggeprogramWPF"
         Title="MainWindow" Height="878.432" Width="1261.602" 
         WindowStartupLocation="CenterScreen" 
-        WindowState="Maximized"> 
+        WindowState="Maximized">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <TabControl HorizontalAlignment="Left" Height="447" Margin="10,10,0,0" VerticalAlignment="Top" Width="344">
             <TabItem x:Name="ConnectionTab" Header="Connection" Margin="0,0,-4,-4">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,1">
                     <ComboBox x:Name="DropDownComPorts" Text="Is not open" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Width="85" Margin="10,31,0,0"/>
-                    <Button x:Name="btnConnect" Content="Connect" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Width="85" Click="btnConnect_Click"/>
+                    <Button x:Name="btnConnect" Content="Connect" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Width="85" Click="btnConnect_Click" Height="33"/>
                     <ComboBox x:Name="DropDownBaudRate" Text="Is not open" HorizontalAlignment="Left" VerticalAlignment="Top" Height="21" Width="85" Margin="110,31,0,0"/>
                     <Label Content="COM Port" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Baud Rate" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnDisconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="110,57,0,0" VerticalAlignment="Top" Width="85" Click="btnDisconnect_Click" RenderTransformOrigin="0.717,2.302"/>
+                    <Button x:Name="btnDisconnect" Content="Disconnect" HorizontalAlignment="Left" Margin="110,57,0,0" VerticalAlignment="Top" Width="85" Click="btnDisconnect_Click" RenderTransformOrigin="0.717,2.302" Height="33"/>
                     <Button x:Name="btnResetFlowSensor" Content="Reset Mesh Tank Flowsensor" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="185" Click="btnResetFlowSensor_Click"/>
                     <ToggleButton Name="tglSimulateArduino" Content="Simulate" HorizontalAlignment="Left" Margin="221,57,0,0" VerticalAlignment="Top" Width="105" IsThreeState="False" Click="tglSimulateArduino_Click" Checked="tglSimulateArduino_Checked"/>
                     <Button x:Name="btnResetBoilFlowSensor" Content="Reset Boil Tank Flowsensor" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Width="185" Click="btnResetBoilFlowSensor_Click"/>
                     <Button Content="Connect to HUB" HorizontalAlignment="Left" Margin="221,160,0,0" VerticalAlignment="Top" Width="105" Click="Button_Click" IsEnabled="True"/>
                     <ComboBox IsEditable="True" Name="cbHubIp" IsEnabled="True" HorizontalAlignment="Left" Margin="10,158,0,0" VerticalAlignment="Top" Width="185"/>
                     <Button x:Name="btnResetSystem" Content="Reset System" HorizontalAlignment="Left" Margin="221,95,0,0" VerticalAlignment="Top" Width="105" Height="45" Click="btnResetSystem_Click"/>
+                    <Button x:Name="RoiceTecognition" Command="{Binding VoiceRecognition}" Content="Enable voice recognition" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="185" Height="48" FontSize="14" Click="RoiceTecognition_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Commans" Margin="4,0,-8,-4">
@@ -114,10 +115,10 @@
             <Ellipse x:Name="indConnected" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="24" Stroke="Black" VerticalAlignment="Top" Width="24" Canvas.Left="296" Canvas.Top="39"/>
             <Button x:Name="btnPrepareBrewing" Command="{Binding PrepareBrewing}" Content="Prepare Brewing" HorizontalAlignment="Left" VerticalAlignment="Top" Width="98" Canvas.Left="10" Canvas.Top="98" Click="btnPrepareBrewing_Click" ToolTip="Prepare the HLT to temperature"/>
             <Button x:Name="btnStartBrewing" Content="Start Brewing" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Canvas.Left="135" Canvas.Top="98" Click="btnStartBrewing_Click"/>
-            <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" VerticalAlignment="Top" Width="310" Canvas.Left="10" Canvas.Top="163" Click="btnConfirm_Click"/>
-            <TextBox x:Name="txtProsesInfo" Height="108" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="248" Width="310"/>
+            <Button x:Name="btnConfirm" Content="Confirm" HorizontalAlignment="Left" VerticalAlignment="Top" Width="310" Canvas.Left="10" Canvas.Top="166" Click="btnConfirm_Click" Height="41"/>
+            <TextBox x:Name="txtProsesInfo" Height="45" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="311" Width="310"/>
             <TextBox x:Name="txtTimer" Text="{Binding TimeDisplay}" Height="23" Canvas.Left="135" TextWrapping="Wrap" Canvas.Top="40" Width="138"/>
-            <ProgressBar x:Name="progressBar" Height="18" Canvas.Left="10" Canvas.Top="215" Width="310"/>
+            <ProgressBar x:Name="progressBar" Height="34" Canvas.Left="10" Canvas.Top="267" Width="310"/>
             <TextBox x:Name="TxtMessageFromSystem" Height="38" Canvas.Left="10" TextWrapping="Wrap" Text="Message from system" IsReadOnly="True" Canvas.Top="123" Width="310" TextChanged="TxtMessageFromSystem_TextChanged" Background="White"/>
             <TextBox x:Name="txtAmbientTemp" Height="23" Canvas.Left="269" TextWrapping="Wrap" Text="12" Canvas.Top="5" Width="51" FontSize="16" FontWeight="Bold"/>
             <TextBlock Canvas.Left="180" TextWrapping="Wrap" Canvas.Top="9" Height="19" Width="89" FontSize="12" FontWeight="Bold" Text="Ambient Temp"/>
@@ -132,7 +133,7 @@
             <Label Content="Total used energy" Canvas.Left="10" Canvas.Top="391" FontSize="16"/>
             <TextBox x:Name="txtTotalUsedEnergy" Height="29" Canvas.Left="149" TextWrapping="Wrap" Text="{Binding TotaleUsedEnergy}" Canvas.Top="391" Width="120" FontSize="18"/>
             <Label Content="KW" Canvas.Left="269" Canvas.Top="391" FontSize="18"/>
-            <Button Command="{Binding OpenProsessViewCommand}" Content="Open Prosess view" HorizontalAlignment="Left" VerticalAlignment="Top" Width="310" Canvas.Left="10" Canvas.Top="188"/>
+            <Button Command="{Binding OpenProsessViewCommand}" Content="Open Prosess view" HorizontalAlignment="Left" VerticalAlignment="Top" Width="310" Canvas.Left="10" Canvas.Top="212" Height="50"/>
         </Canvas>
         <local:Tank x:Name="MashTank" Margin="544,36,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SendOverrideCommandHeatingElement="SendOverrideCommandHeatingElement" SendOverrideCommandCirculationPump="SendOverrideCommandCirculationPump" SendOverrideCommandTransferElement="SendOverrideCommandTransferPump"/>
         <local:Tank x:Name="BoilTank" Margin="729,36,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SendOverrideCommandHeatingElement="SendOverrideCommandHeatingElement" SendOverrideCommandCirculationPump="SendOverrideCommandCirculationPump" SendOverrideCommandTransferElement="SendOverrideCommandTransferPump"/>

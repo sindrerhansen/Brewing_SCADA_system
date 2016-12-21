@@ -360,7 +360,11 @@ namespace BryggeprogramWPF
 
         private readonly List<String> names = new List<string>
         {
-            "HLT","MashTank","RIMS Outeside","Boil Tank","Mesh Volume"
+            "HLT",
+            "MashTank",
+            "RIMS Outeside",
+            "Boil Tank",
+            "Mesh Volume"
         };
 
         private void SetUpModel()

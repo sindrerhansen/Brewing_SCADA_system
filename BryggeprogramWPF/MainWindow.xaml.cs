@@ -20,6 +20,8 @@ using System.Xml.Serialization;
 using System.IO;
 using Newtonsoft.Json;
 using Commen;
+using System.Net;
+using System.Net.Sockets;
 
 namespace BryggeprogramWPF
 {
@@ -77,6 +79,14 @@ namespace BryggeprogramWPF
             cbHubIp.Items.Add("192.168.3.80");
             cbHubIp.Items.Add("93.89.117.144");
             cbHubIp.Items.Add("localhost");
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    cbHubIp.Items.Add(ip.ToString());
+                }
+            }
 
             DropDownComPorts.ItemsSource = SerialPort.GetPortNames();
             btnConfirm.IsEnabled = false;
@@ -1028,6 +1038,19 @@ namespace BryggeprogramWPF
             else
             {
                 btnConnect.IsEnabled = true;
+            }
+        }
+        private bool RoiceTecognition_Click_tgl = false;
+        private void RoiceTecognition_Click(object sender, RoutedEventArgs e)
+        {
+            if (!RoiceTecognition_Click_tgl)
+            {
+
+                RoiceTecognition_Click_tgl = !RoiceTecognition_Click_tgl;
+            }
+            else
+            {
+                RoiceTecognition_Click_tgl = !RoiceTecognition_Click_tgl;
             }
         }
     }
